@@ -86,6 +86,44 @@ export function showApp(user) {
   restart();
 }
 
+/* ── Mot de passe oublié ── */
+export async function doForgotPassword() {
+  const email   = document.getElementById("login-email").value.trim();
+  const success = document.getElementById("forgot-success");
+
+  // Masquer les messages précédents
+  document.getElementById("login-error").classList.remove("show");
+  success.classList.remove("show");
+  document.getElementById("login-email").classList.remove("error");
+
+  if (!email) {
+    showLoginError("Saisissez votre adresse e-mail pour recevoir le lien de réinitialisation.");
+    document.getElementById("login-email").classList.add("error");
+    document.getElementById("login-email").focus();
+    return;
+  }
+
+  const btn = document.getElementById("forgot-btn");
+  btn.disabled  = true;
+  btn.textContent = "Envoi en cours…";
+
+  try {
+    await getAuth().sendPasswordResetEmail(email);
+    success.textContent = "✅ Un e-mail de réinitialisation a été envoyé à " + email;
+    success.classList.add("show");
+  } catch (err) {
+    const msgs = {
+      "auth/user-not-found":        "Aucun compte trouvé pour cet e-mail.",
+      "auth/invalid-email":         "Adresse e-mail invalide.",
+      "auth/network-request-failed":"Erreur réseau. Vérifiez votre connexion.",
+    };
+    showLoginError(msgs[err.code] || "Erreur : " + err.message);
+  } finally {
+    btn.disabled    = false;
+    btn.textContent = "Mot de passe oublié ?";
+  }
+}
+
 /* ── Helpers internes ── */
 function showLoginError(msg) {
   const b = document.getElementById("login-error");
