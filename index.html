@@ -23,6 +23,9 @@
 
   <!-- Export Excel -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <!-- QR Code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -81,6 +84,24 @@
         Se connecter
       </button>
     </div>
+    <!-- QR Code partage -->
+    <div class="qr-share">
+      <button class="qr-toggle" id="qr-toggle" onclick="toggleQR()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+          <path d="M14 14h3v3h-3zM17 17h3v3h-3zM14 20h3"/>
+        </svg>
+        Partager l'application
+      </button>
+      <div class="qr-panel" id="qr-panel">
+        <p class="qr-label">Scannez pour ouvrir l'application</p>
+        <div id="qr-code"></div>
+        <p class="qr-url">methodelogistiquesncf-boop.github.io/rassemblement/</p>
+      </div>
+    </div>
+
     <p class="login-footer">Accès réservé au personnel autorisé</p>
   </div>
 
@@ -208,6 +229,30 @@
 
   <!-- Point d'entrée ES Module -->
   <script type="module" src="./modules/app.js"></script>
+
+  <!-- QR Code init (non-module, dépend de qrcodejs) -->
+  <script>
+    var _qrGenerated = false;
+
+    function toggleQR() {
+      var panel  = document.getElementById("qr-panel");
+      var toggle = document.getElementById("qr-toggle");
+      var open   = panel.classList.toggle("show");
+      toggle.classList.toggle("active", open);
+
+      if (open && !_qrGenerated) {
+        new QRCode(document.getElementById("qr-code"), {
+          text:         "https://methodelogistiquesncf-boop.github.io/rassemblement/",
+          width:        160,
+          height:       160,
+          colorDark:    "#151c2c",
+          colorLight:   "#ffffff",
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        _qrGenerated = true;
+      }
+    }
+  </script>
 
 </body>
 </html>
