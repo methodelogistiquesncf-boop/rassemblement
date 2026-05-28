@@ -649,3 +649,61 @@ mark { background: #fef08a; color: #854d0e; border-radius: 3px; padding: 0 2px; 
 }
 .toggle-password:hover { color: var(--accent); }
 .toggle-password svg   { width: 18px; height: 18px; }
+/* ── QR CODE PARTAGE ── */
+.qr-share {
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.qr-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: border-color .15s, color .15s, background .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.qr-toggle svg { width: 18px; height: 18px; flex-shrink: 0; }
+.qr-toggle:hover,
+.qr-toggle.active { border-color: var(--accent); color: var(--accent); background: var(--accent-lt); }
+
+.qr-panel {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0 4px;
+}
+.qr-panel.show { display: flex; }
+
+.qr-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  text-align: center;
+}
+#qr-code {
+  padding: 10px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  line-height: 0;
+}
+#qr-code img, #qr-code canvas { border-radius: 4px; }
+
+.qr-url {
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+  word-break: break-all;
+  opacity: .7;
+}
