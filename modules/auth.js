@@ -86,6 +86,20 @@ export function showApp(user) {
   restart();
 }
 
+/* ── Afficher / masquer le mot de passe ── */
+export function togglePasswordVisibility() {
+  const input = document.getElementById("login-password");
+  const show  = document.getElementById("icon-eye-show");
+  const hide  = document.getElementById("icon-eye-hide");
+  const btn   = document.getElementById("toggle-password");
+  const isHidden = input.type === "password";
+
+  input.type        = isHidden ? "text" : "password";
+  show.style.display = isHidden ? "none"  : "";
+  hide.style.display = isHidden ? ""      : "none";
+  btn.setAttribute("aria-label", isHidden ? "Masquer le mot de passe" : "Afficher le mot de passe");
+}
+
 /* ── Mot de passe oublié ── */
 export async function doForgotPassword() {
   const email   = document.getElementById("login-email").value.trim();
