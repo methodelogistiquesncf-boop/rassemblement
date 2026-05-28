@@ -103,13 +103,13 @@ export async function doForgotPassword() {
     return;
   }
 
-  const btn = document.getElementById("forgot-btn");
-  btn.disabled  = true;
-  btn.textContent = "Envoi en cours…";
+  const link = document.getElementById("forgot-link");
+  link.style.pointerEvents = "none";
+  link.textContent = "Envoi en cours…";
 
   try {
     await getAuth().sendPasswordResetEmail(email);
-    success.textContent = "✅ Un e-mail de réinitialisation a été envoyé à " + email;
+    success.textContent = "✅ E-mail envoyé à " + email;
     success.classList.add("show");
   } catch (err) {
     const msgs = {
@@ -119,8 +119,8 @@ export async function doForgotPassword() {
     };
     showLoginError(msgs[err.code] || "Erreur : " + err.message);
   } finally {
-    btn.disabled    = false;
-    btn.textContent = "Mot de passe oublié ?";
+    link.style.pointerEvents = "";
+    link.textContent = "Mot de passe oublié ?";
   }
 }
 
