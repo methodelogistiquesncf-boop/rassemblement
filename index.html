@@ -13,10 +13,10 @@
   <link rel="apple-touch-icon" href="./icons/icon-152x152.png">
   <link rel="icon" type="image/x-icon" href="./icons/favicon.ico">
 
-  <!-- Feuille de style externe -->
+  <!-- Feuille de style -->
   <link rel="stylesheet" href="./style.css">
 
-  <!-- Firebase -->
+  <!-- Firebase (compat, chargé avant le module ES) -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
@@ -176,8 +176,8 @@
   <!-- Toast -->
   <div id="toast"></div>
 
-  <!-- Script applicatif externe -->
-  <script src="./app.js"></script>
+  <!-- Point d'entrée ES Module -->
+  <script type="module" src="./modules/app.js"></script>
 
 </body>
 </html>
