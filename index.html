@@ -46,17 +46,17 @@
         <input type="password" id="login-password"
                placeholder="••••••••"
                autocomplete="current-password" />
+        <div style="text-align:right;margin-top:5px;">
+          <span id="forgot-link" onclick="doForgotPassword()">Mot de passe oublié ?</span>
+        </div>
       </div>
-      <button class="btn-login" id="login-btn" onclick="doLogin()">
-        Se connecter
-      </button>
-
-      <button class="btn-forgot" id="forgot-btn" onclick="doForgotPassword()">
-        Mot de passe oublié ?
-      </button>
 
       <!-- Message de confirmation envoi e-mail -->
       <div class="login-success" id="forgot-success"></div>
+
+      <button class="btn-login" id="login-btn" onclick="doLogin()">
+        Se connecter
+      </button>
     </div>
     <p class="login-footer">Accès réservé au personnel autorisé</p>
   </div>
