@@ -591,3 +591,21 @@ mark { background: #fef08a; color: #854d0e; border-radius: 3px; padding: 0 2px; 
   .opt-btn { font-size: 16px; padding: 15px 18px; }
   .btn-row { flex-direction: row; }
 }
+/* ── MOT DE PASSE OUBLIÉ ── */
+.btn-forgot {
+  width: 100%; margin-top: 12px; padding: 11px;
+  background: none; border: none; color: var(--muted);
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  font-family: var(--font); border-radius: 8px;
+  transition: color .15s, background .15s;
+}
+.btn-forgot:hover    { color: var(--accent); background: var(--accent-lt); }
+.btn-forgot:disabled { opacity: .5; cursor: not-allowed; }
+
+.login-success {
+  background: #dcfce7; border: 1.5px solid #86efac;
+  border-radius: 9px; padding: 11px 14px;
+  font-size: 13px; color: #15803d; font-weight: 500;
+  margin-top: 12px; display: none; line-height: 1.45;
+}
+.login-success.show { display: block; }
