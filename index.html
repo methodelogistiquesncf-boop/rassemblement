@@ -13,18 +13,13 @@
   <link rel="apple-touch-icon" href="./icons/icon-152x152.png">
   <link rel="icon" type="image/x-icon" href="./icons/favicon.ico">
 
-  <!-- Feuille de style -->
   <link rel="stylesheet" href="./style.css">
 
-  <!-- Firebase (compat, chargé avant le module ES) -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
-  <!-- Export Excel -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-
-  <!-- QR Code -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
@@ -52,14 +47,12 @@
                  autocomplete="current-password" />
           <button type="button" class="toggle-password" id="toggle-password"
                   onclick="togglePasswordVisibility()" aria-label="Afficher le mot de passe">
-            <!-- Œil ouvert -->
             <svg id="icon-eye-show" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                  fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round">
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
-            <!-- Œil barré -->
             <svg id="icon-eye-hide" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                  fill="none" stroke="currentColor" stroke-width="2"
                  stroke-linecap="round" stroke-linejoin="round"
@@ -77,29 +70,30 @@
         </div>
       </div>
 
-      <!-- Message de confirmation envoi e-mail -->
       <div class="login-success" id="forgot-success"></div>
 
       <button class="btn-login" id="login-btn" onclick="doLogin()">
         Se connecter
       </button>
-    </div>
-    <!-- QR Code partage -->
-    <div class="qr-share">
-      <button class="qr-toggle" id="qr-toggle" onclick="toggleQR()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-          <rect x="3" y="14" width="7" height="7"/>
-          <path d="M14 14h3v3h-3zM17 17h3v3h-3zM14 20h3"/>
-        </svg>
-        Partager l'application
-      </button>
-      <div class="qr-panel" id="qr-panel">
-        <p class="qr-label">Scannez pour ouvrir l'application</p>
-        <div id="qr-code"></div>
-        <p class="qr-url">methodelogistiquesncf-boop.github.io/rassemblement/</p>
+
+      <!-- QR Code partage — dans la carte, aligné à gauche -->
+      <div class="qr-share">
+        <button class="qr-toggle" id="qr-toggle" onclick="toggleQR()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+            <path d="M14 14h3v3h-3zM17 17h3v3h-3zM14 20h3"/>
+          </svg>
+          Partager l'application
+        </button>
+        <div class="qr-panel" id="qr-panel">
+          <p class="qr-label">Scannez pour ouvrir l'application</p>
+          <div id="qr-code"></div>
+          <p class="qr-url">methodelogistiquesncf-boop.github.io/rassemblement/</p>
+        </div>
       </div>
+
     </div>
 
     <p class="login-footer">Accès réservé au personnel autorisé</p>
@@ -194,10 +188,10 @@
         </div>
       </div>
 
-    </div><!-- /container -->
-  </div><!-- /app-view -->
+    </div>
+  </div>
 
-  <!-- Input photo (caché, important pour mobile) -->
+  <!-- Input photo -->
   <input type="file" id="photo-input" accept="image/*" multiple
          style="position:fixed;opacity:0;width:1px;height:1px;top:-200px;left:-200px;pointer-events:none;"
          onchange="handlePhotoInput(event)" />
@@ -227,10 +221,8 @@
   <!-- Toast -->
   <div id="toast"></div>
 
-  <!-- Point d'entrée ES Module -->
   <script type="module" src="./modules/app.js"></script>
 
-  <!-- QR Code init (non-module, dépend de qrcodejs) -->
   <script>
     var _qrGenerated = false;
 
@@ -243,8 +235,8 @@
       if (open && !_qrGenerated) {
         new QRCode(document.getElementById("qr-code"), {
           text:         "https://methodelogistiquesncf-boop.github.io/rassemblement/",
-          width:        160,
-          height:       160,
+          width:        100,
+          height:       100,
           colorDark:    "#151c2c",
           colorLight:   "#ffffff",
           correctLevel: QRCode.CorrectLevel.H
