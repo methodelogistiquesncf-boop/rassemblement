@@ -10,13 +10,14 @@ const WARN_SIZE_B  = 200000; // 200 Ko
 
 /* ── Firebase ── */
 const firebaseConfig = {
-  apiKey:            "AIzaSyARI0sADSyvYcTwaSlK0TpvLY0uwL2BlRw",
-  authDomain:        "rassemblement-b7927.firebaseapp.com",
-  projectId:         "rassemblement-b7927",
-  storageBucket:     "rassemblement-b7927.firebasestorage.app",
-  messagingSenderId: "127334162906",
-  appId:             "1:127334162906:web:92c2e6281c93df6eab20e3"
+  apiKey: "AIzaSyB_L59ptLWbd5y4mlvHpqNmbJBn705JWjk",
+  authDomain: "rassemblement-1a51c.firebaseapp.com",
+  projectId: "rassemblement-1a51c",
+  storageBucket: "rassemblement-1a51c.firebasestorage.app",
+  messagingSenderId: "303649098218",
+  appId: "1:303649098218:web:7b892712822dd715688a93"
 };
+
 firebase.initializeApp(firebaseConfig);
 const db   = firebase.firestore();
 const auth = firebase.auth();
