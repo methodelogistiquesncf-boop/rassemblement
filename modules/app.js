@@ -12,7 +12,7 @@
 import { firebaseConfig }                          from "./config.js";
 import { state }                                   from "./state.js";
 import { doLogin, doLogout, showLogin, showApp,
-         closeConfirm }                            from "./auth.js";
+         closeConfirm, doForgotPassword }          from "./auth.js";
 import { render, pickOption, submitFields,
          submitText, submitTextarea, advanceStep,
          goBack, restart }                         from "./navigation.js";
@@ -117,6 +117,7 @@ Object.assign(window, {
   doLogin,
   doLogout,
   closeConfirm,
+  doForgotPassword,
 
   /* Navigation */
   pickOption,
